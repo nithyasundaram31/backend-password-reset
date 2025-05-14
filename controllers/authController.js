@@ -17,7 +17,7 @@ export const requestReset = async (req, res) => {
     const token = crypto.randomBytes(32).toString('hex');
     await new ResetToken({ userId: user._id, token }).save();
 
-    const link = ` http://localhost:5173/password-reset/${token}`;
+    const link = ` http://127.0.0.1:4000/api/auth/password-reset/${token}`;
     console.log('Sending email to:', user.email);
     await sendEmail(user.email, 'Password Reset', `Click to reset password: ${link}`);
     console.log('Email sent.');
