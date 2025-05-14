@@ -22,7 +22,7 @@ credentials: true,
 ];*/
 
 app.use(cors({
-  origin:'',
+  origin:'https://fantastic-tanuki-92091e.netlify.app/',
   credentials: true,
 }));
 
