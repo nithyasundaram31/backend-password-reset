@@ -17,7 +17,7 @@ export const requestReset = async (req, res) => {
     const token = crypto.randomBytes(32).toString('hex');
     await new ResetToken({ userId: user._id, token }).save();
 
-    const link = `https://splendorous-gecko-55b2d1.netlify.app/password-reset/${token}`;
+    const link = `https://wondrous-sorbet-23efd9.netlify.app/password-reset/${token}`;
     console.log('Sending email to:', user.email);
     await sendEmail(user.email, 'Password Reset', `Click to reset password: ${link}`);
     console.log('Email sent.');

@@ -14,16 +14,21 @@ const app = express();
   origin: 'https://splendorous-gecko-55b2d1.netlify.app',
   credentials: true,
 }));*/
-const allowedOrigins = ['https://splendorous-gecko-55b2d1.netlify.app'];
+// const allowedOrigins = ['https://wondrous-sorbet-23efd9.netlify.app'];
+
+// app.use(cors({
+//   origin: function (origin, callback) {
+//     if (!origin || allowedOrigins.includes(origin)) {
+//       callback(null, true);
+//     } else {
+//       callback(new Error('Not allowed by CORS'));
+//     }
+//   },
+//   credentials: true,
+// }));
 
 app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
+  origin: 'https://wondrous-sorbet-23efd9.netlify.app',
   credentials: true,
 }));
 
