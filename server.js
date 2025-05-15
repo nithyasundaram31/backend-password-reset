@@ -10,8 +10,20 @@ dotenv.config();
 const app = express();
 
 
-app.use(cors({
+/*app.use(cors({
   origin: 'https://splendorous-gecko-55b2d1.netlify.app',
+  credentials: true,
+}));*/
+const allowedOrigins = ['https://splendorous-gecko-55b2d1.netlify.app'];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true,
 }));
 
