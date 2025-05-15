@@ -22,9 +22,10 @@ credentials: true,
 ];*/
 
 app.use(cors({
-  origin:'https://fantastic-tanuki-92091e.netlify.app/',
+  origin: 'https://curious-puffpuff-49dc22.netlify.app',
   credentials: true,
 }));
+
 
 
 app.use(cookieParser());

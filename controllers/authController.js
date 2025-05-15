@@ -17,7 +17,7 @@ export const requestReset = async (req, res) => {
     const token = crypto.randomBytes(32).toString('hex');
     await new ResetToken({ userId: user._id, token }).save();
 
-    const link = ` https://fantastic-tanuki-92091e.netlify.app//${token}`;
+    const link = `https://curious-puffpuff-49dc22.netlify.app/password-reset/${token}`;
     console.log('Sending email to:', user.email);
     await sendEmail(user.email, 'Password Reset', `Click to reset password: ${link}`);
     console.log('Email sent.');
@@ -106,17 +106,24 @@ export const signupUser = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-  
+    console.log('📥 Signup request received');
+    console.log('Request body:', req.body);
+
     const existingUser = await User.exists({ email });
-    if (existingUser) return res.status(400).json({ message: 'User already exists' });
+    if (existingUser) {
+      console.log('⚠️ User already exists:', email);
+      return res.status(400).json({ message: 'User already exists' });
+    }
 
-    const hashedPassword = await bcrypt.hash(password, 6); 
+    const hashedPassword = await bcrypt.hash(password, 6);
 
-    await User.create({ email, password: hashedPassword });
+    const newUser = await User.create({ email, password: hashedPassword });
 
-    
+    console.log('✅ User created:', newUser.email);
+
     res.status(201).json({ message: 'User created successfully' });
   } catch (err) {
+    console.error('❌ Signup error:', err);
     res.status(500).json({ message: 'Signup failed', error: err.message });
   }
 };
