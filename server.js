@@ -10,22 +10,10 @@ dotenv.config();
 const app = express();
 
 
-/*app.use(cors({
-origin: "https://6819a21cba11b05832a97256--soft-sunshine-020931.netlify.app",
-credentials: true, 
-}));*/
-
-/*const allowedOrigins = [
-  'http://localhost:5173',
-  //'https://6819a21cba11b05832a97256--soft-sunshine-020931.netlify.app'
-  'https://681b62b63ee14a0008e5a887--soft-sunshine-020931.netlify.app'
-];*/
-
 app.use(cors({
   origin: 'https://splendorous-gecko-55b2d1.netlify.app',
   credentials: true,
 }));
-
 
 
 app.use(cookieParser());
