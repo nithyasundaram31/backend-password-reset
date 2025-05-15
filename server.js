@@ -14,23 +14,24 @@ const app = express();
   origin: 'https://splendorous-gecko-55b2d1.netlify.app',
   credentials: true,
 }));*/
-// const allowedOrigins = ['https://wondrous-sorbet-23efd9.netlify.app'];
 
-// app.use(cors({
-//   origin: function (origin, callback) {
-//     if (!origin || allowedOrigins.includes(origin)) {
-//       callback(null, true);
-//     } else {
-//       callback(new Error('Not allowed by CORS'));
-//     }
-//   },
-//   credentials: true,
-// }));
+const allowedOrigins = ['https://meek-kashata-f904a4.netlify.app'];
 
 app.use(cors({
-  origin: 'https://wondrous-sorbet-23efd9.netlify.app',
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true,
 }));
+
+/*app.use(cors({
+  origin: 'https://meek-kashata-f904a4.netlify.app',
+  credentials: true,
+})); */
 
 
 app.use(cookieParser());
