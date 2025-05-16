@@ -15,7 +15,7 @@ const app = express();
   credentials: true,
 }));*/
 
-const allowedOrigins = ['https://cool-sunflower-6b727e.netlify.app'];
+const allowedOrigins = ['https://joyful-cobbler-aa69a2.netlify.app'];
 
 app.use(cors({
   origin: function (origin, callback) {
