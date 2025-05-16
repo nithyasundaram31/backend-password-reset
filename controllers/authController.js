@@ -17,7 +17,7 @@ export const requestReset = async (req, res) => {
     const token = crypto.randomBytes(32).toString('hex');
     await new ResetToken({ userId: user._id, token }).save();
 
-    const link = `https://joyful-cobbler-aa69a2.netlify.app/password-reset/${token}`;
+    const link = `https://joyful-cobbler-aa69a2.netlify.app/reset-password/${token}`;
     console.log('Sending email to:', user.email);
     await sendEmail(user.email, 'Password Reset', `Click to reset password: ${link}`);
     console.log('Email sent.');
